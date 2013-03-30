@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+
+        <ul data-bind="foreach: twits">
+            <li>
+                <p>@<span data-bind="text: user.name"></span> at <span data-bind="text: created_at"></span></p>
+                <p data-bind="text: text"></p>
+            </li>
+        </ul>
+
+        <script src="js/vendor.js"></script>
+
+        <script>
+            window.addEventListener('message', function (message) {
+                var twit = JSON.parse(message.data);
+                //TODO:
+            });
+
+            
+
+        </script>
+
+    </body>
+</html>

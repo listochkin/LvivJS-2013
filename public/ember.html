@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <script type="text/x-handlebars">
+            <ul data-bind="foreach: twits">
+            {{each twit in twits}}
+                <li>
+                    <p>@{{user.name}} at {{created_at}}</p>
+                    <p>{{}}</p>
+                </li>
+            {{/each}}
+            </ul>
+        </script>
+
+        <script src="js/vendor.js"></script>
+
+        <script>
+            window.addEventListener('message', function (message) {
+                var twit = JSON.parse(message.data);
+                //TODO:
+            });
+
+            
+
+        </script>
+
+    </body>
+</html>
