@@ -11,11 +11,14 @@
 
 <script type="text/x-handlebars">
     <h2>Ember</h2>
-    <p><span>{{App.count}}</span> Twits loaded</p>
+    <p><span>{{App.tweets.length}}</span> Twits loaded</p>
     <ul>
         {{#each App.tweets}}
         <li>
-            <p>@<span>{{user.name}}</span> at <span>{{created_at}}</span></p>
+            <p>
+                <img {{bindAttr src="user.profile_image_url"}}  style="float:left" />
+                @<span>{{user.name}}</span> at <span>{{created_at}}</span>
+            </p>
             <p>{{text}}</p>
         </li>
         {{/each}}
@@ -26,11 +29,9 @@
     window.App = App = Ember.Application.create();
 
     window.App.tweets = Ember.A();
-    window.App.count = 0;
 
     window.addEventListener('message', function (message) {
         window.App.tweets.unshiftObject(JSON.parse(message.data));
-        window.App.count = window.App.tweets.size;
     });
 
 </script>
