@@ -11,6 +11,10 @@
             function TwitDashboard($scope){
                 $scope.twits = [];
 
+                $scope.count = function() {
+                    return $scope.twits.length;
+                };
+
                 window.addEventListener('message', function (message) {
                     var twit = JSON.parse(message.data);
 
@@ -22,7 +26,7 @@
 
         <h2>Angular JS</h2>
         <div ng-controller="TwitDashboard">
-            <p><span>{{twits.length}}</span> Twits loaded</p>
+            <p><span>{{count()}}</span> Twits loaded</p>
             <ul ng-repeat="twit in twits">
                 <li>
                     <p>
