@@ -15,14 +15,28 @@ var fs = require('fs'),
 app.route('/').file(path.join(__dirname, '../public/index.html'));
 app.route('/*').files(path.join(__dirname, '../public'));
 
+
+var sockets = [];
+var twitStream = require('./twitter');
+
+twitStream.on('tweet', function (tweet) {
+    // console.log(tweet);
+    sockets.forEach(function (socket) {
+        socket.emit('tweet', stringify(tweet));
+    })
+});
+
+twitStream.start();
+
 var twits = fs.readFileSync(path.join(__dirname, 'tweets.mock.json'), 'utf8').split('\n');
 var i = 0;
 app.sockets.on('connection', function (socket) {
-	setInterval(function () {
-		var twit = twits[i];
-		// console.log(twit);
-		socket.emit('twit', twit);
-		i = (i + 1) % twits.length;
-	}, 1000);
+    sockets.push(socket);
+	// setInterval(function () {
+	// 	var twit = twits[i];
+	// 	// console.log(twit);
+	// 	socket.emit('twit', twit);
+	// 	i = (i + 1) % twits.length;
+	// }, 1000);
 });
 app.httpServer.listen(8008);

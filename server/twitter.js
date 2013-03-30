@@ -12,21 +12,14 @@ var T = new Twit(JSON.parse(fs.readFileSync(path.join(__dirname, 'twitter-api-ke
 
 var stream = T.stream('statuses/filter', {
 	track: [
+		'lvivjs', 'kiev', 'lunch', 'dinner', 'korea',
 		'javascript', 'es6', 'ecmascript', 'js',
 		'node.js', 'nodejs', 'typescript', 'coffeescript',
-		'backbone', 'angular', 'ember', 'knockout',
-		'mozilla', 'opera', 'firefox',
+		'backbonejs', 'angularjs', 'emberjs', 'knockoutjs',
+		//'mozilla', 'opera', 'firefox',
 		'substack', 'izs', 'mikeal', 'tjholowaychuk', 'wycats',
 		'brendaneich', 'codepo8', 'horse_js'
 	],
 	'stall_warnings': true
 });
-// var jsonStream = through(function (data) {
-// 	this.write(stringify(data));
-// })
-// stream.on('twit', function (twit) {
-// 	jsonStream.write(twit);
-// })
-// stream.start();
 module.exports = stream;
-//emitStream(stream);
