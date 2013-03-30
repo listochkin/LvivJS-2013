@@ -8,21 +8,8 @@
         <script src="js/vendor.js"></script>
 
         <script>
-            var twitsArr = [];
-
-            angular.injector(['ng']).invoke(function($rootScope) {
-               var scope = $rootScope.$new();
-
-               scope.$watch(function($scope) {
-                 $scope.twits = twitsArr;
-               }); // initialize the watch
-
-               scope.$digest();
-            });
-
             function TwitDashboard($scope){
                 $scope.twits = [];
-                //$scope.twits.push(twit);
 
                 window.addEventListener('message', function (message) {
                     var twit = JSON.parse(message.data);
@@ -30,10 +17,6 @@
                     $scope.twits.unshift(twit);
                     $scope.$apply();
                 });
-
-                $scope.twitsLoaded = function (){
-                    return $scope.twits.length;
-                };
             }
         </script>
 
