@@ -27,7 +27,7 @@
                 window.addEventListener('message', function (message) {
                     var twit = JSON.parse(message.data);
 
-                    $scope.twits.push(twit);
+                    $scope.twits.unshift(twit);
                     $scope.$apply();
                 });
 
@@ -39,9 +39,10 @@
 
         <h2>Angular JS</h2>
         <div ng-controller="TwitDashboard">
-            <ul class="unstyled">
-                <li ng-repeat="twit in twits">
-                    <p><span>{{twit.user.name}}</span> <i>at</i> <span>{{twit.created_at}}</span></p>
+            <p><span>{{twits.length}}</span> Twits loaded</p>
+            <ul ng-repeat="twit in twits">
+                <li>
+                    <p>@<span>{{twit.user.name}}</span> at <span>{{twit.created_at}}</span></p>
                     <p>{{twit.text}}</p>
                 </li>
             </ul>
