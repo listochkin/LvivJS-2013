@@ -1,0 +1,42 @@
+{
+  "name": "lvivjs",
+  "version": "0.0.0",
+  "description": "Lviv JS 2013 live-coding session",
+  "main": "index.js",
+  "scripts": {
+    "stylus": "stylus 'client/styl' --include node_modules/nib/lib/ --out public/css/",
+    "jshint": "jshint --show-non-errors .",
+    "browserify": "browserify client/js/twits.js > public/js/app.js",
+    "build": "npm run browserify && npm run stylus",
+    "start": "npm run build && node server/server.js",
+    "test": "mocha test",
+    "watch": "supervisor --watch client,test --extensions 'js|styl' --no-restart-on exit --exec npm -- run build"
+  },
+  "repository": "",
+  "author": "Andrey Listochkin",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "~1.0.0",
+    "knockout": "~2.3.0pre",
+    "jquery-with-migrate": "~0.1.0",
+    "filed": "0.0.7",
+    "request": "~2.16.6",
+    "twit": "~1.1.6",
+    "emit-stream": "~0.1.0",
+    "tako": "~0.3.0",
+    "JSONStream": "~0.6.2",
+    "json-stringify-safe": "~4.0.0",
+    "through": "~2.2.7",
+    "dnode": "~1.0.5",
+    "ecstatic": "~0.4.2",
+    "socket.io": "~0.9.13"
+  },
+  "devDependencies": {
+    "supervisor": "~0.5.2",
+    "jshint": "~1.1.0",
+    "nib": "~0.9.1",
+    "stylus": "~0.32.1",
+    "browserify": "~2.10.0"
+  }
+}
