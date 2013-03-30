@@ -12,6 +12,7 @@ var deps = {
         'knockout.js': 'https://raw.github.com/SteveSanderson/knockout/v2.2.1/build/output/knockout-latest.debug.js',
         'socket.io-client.js': 'https://gist.github.com/listochkin/5090981/raw/86fde49f63fcaf90f131359dd9889cd47622fcc3/socket.io-client.js',
         //'anima.js': 'https://raw.github.com/lvivski/anima/master/anima.js'
+        'angular.js': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js',
         'ember.js': 'https://raw.github.com/emberjs/ember.js/release-builds/ember-1.0.0-rc.1.js',
         'ember-data.js': 'https://gist.github.com/listochkin/5266245/raw/00a6e254e6e5d4e9048446de01b285638332910e/ember-data.js'
     },

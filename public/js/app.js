@@ -10,7 +10,7 @@ var frames = [
 ];
 
 socket.on('twit', function (twit) {
-	console.log(twit);
+	// console.log(twit);
     frames.forEach(function (frame) {
     	frame.postMessage(twit, window.location.origin);
     });

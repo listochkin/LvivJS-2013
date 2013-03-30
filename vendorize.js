@@ -2,7 +2,7 @@
 'use strict';
 var filed = require('filed'), fs = require('fs');
 
-var libs = ['jquery', 'jquery-migrate', 'bootstrap', 'socket.io-client', 'knockout', 'underscore'];
+var libs = ['jquery', 'jquery-migrate', 'bootstrap', 'socket.io-client', 'knockout', 'underscore', 'handlebars', 'ember'];
 
 var output = filed('./public/js/vendor.js');
 libs.map(function (lib) {
