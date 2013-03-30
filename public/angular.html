@@ -25,7 +25,10 @@
             <p><span>{{twits.length}}</span> Twits loaded</p>
             <ul ng-repeat="twit in twits">
                 <li>
-                    <p>@<span>{{twit.user.name}}</span> at <span>{{twit.created_at}}</span></p>
+                    <p>
+                        <img src="{{twit.user.profile_image_url}}" style="float:left" />
+                        @<span>{{twit.user.name}}</span> at <span>{{twit.created_at}}</span>
+                    </p>
                     <p>{{twit.text}}</p>
                 </li>
             </ul>

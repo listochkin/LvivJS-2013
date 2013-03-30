@@ -10,7 +10,10 @@
         <p><span data-bind="text: count">0</span> Twits loaded</p>
         <ul data-bind="foreach: twits">
             <li>
-                <p>@<span data-bind="text: user.name"></span> at <span data-bind="text: created_at"></span></p>
+                <p>
+                    <img data-bind="attr: {src: user.profile_image_url}" style="float:left" />
+                    @<span data-bind="text: user.name"></span> at <span data-bind="text: created_at"></span>
+                </p>
                 <p data-bind="text: text"></p>
             </li>
         </ul>
