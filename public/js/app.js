@@ -11,10 +11,9 @@ var frames = [
 	document.getElementById('ember').contentWindow
 ];
 
-socket.on('twit', function (twit) {
-	// console.log(twit);
+socket.on('tweet', function (tweet) {
     frames.forEach(function (frame) {
-    	frame.postMessage(twit, window.location.origin);
+    	frame.postMessage(tweet, window.location.origin);
     });
 });
 

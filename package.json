@@ -6,7 +6,7 @@
   "scripts": {
     "stylus": "stylus 'client/styl' --include node_modules/nib/lib/ --out public/css/",
     "jshint": "jshint --show-non-errors .",
-    "browserify": "browserify client/js/twits.js > public/js/app.js",
+    "browserify": "browserify client/js/tweets.js > public/js/app.js",
     "build": "npm run browserify && npm run stylus",
     "start": "npm run build && node server/server.js",
     "test": "mocha test",
