@@ -2,6 +2,12 @@
 /*global require*/
 'use strict';
 
+window.counters = {
+	angular: [],
+	ember: [],
+	knockout: []
+}
+
 var socket = io.connect('http://localhost');
 
 var frames = [

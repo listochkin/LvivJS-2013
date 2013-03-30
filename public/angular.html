@@ -8,7 +8,17 @@
         <script src="js/vendor.js"></script>
 
         <script>
-            function TwitDashboard($scope){
+            function TwitDashboard($scope) {
+                var topWindow = null;
+                setTimeout(function () {
+                    setInterval(function () {
+                        topWindow.counters.angular.push({
+                            count: $scope.twits.length,
+                            timer: window.performance.now()
+                        });
+                    }, 1000);                    
+                }, 5000);
+
                 $scope.twits = [];
 
                 $scope.count = function() {
@@ -16,12 +26,14 @@
                 };
 
                 window.addEventListener('message', function (message) {
+                    topWindow = message.source;
                     var twit = JSON.parse(message.data);
 
                     $scope.twits.unshift(twit);
                     $scope.$apply();
                 });
             }
+
         </script>
 
         <h2>Angular JS</h2>
@@ -30,7 +42,7 @@
             <ul ng-repeat="twit in twits">
                 <li>
                     <p>
-                        <img src="{{twit.user.profile_image_url}}" style="float:left" />
+                        <img ng-src="{{twit.user.profile_image_url}}" style="float:left" />
                         @<span>{{twit.user.name}}</span> at <span>{{twit.created_at}}</span>
                     </p>
                     <p>{{twit.text}}</p>
