@@ -6,6 +6,8 @@
     </head>
     <body>
 
+        <h2>Knockout</h2>
+        <p><span data-bind="text: count">0</span> Twits loaded</p>
         <ul data-bind="foreach: twits">
             <li>
                 <p>@<span data-bind="text: user.name"></span> at <span data-bind="text: created_at"></span></p>
@@ -17,11 +19,14 @@
 
         <script>
             window.addEventListener('message', function (message) {
-                vm.twits.push(JSON.parse(message.data));
+                vm.twits.unshift(JSON.parse(message.data));
             });
 
-            window.vm = {
-                twits: ko.observableArray([])
+            window.vm = new function ViewModel () {
+                this.twits = ko.observableArray([]);
+                this.count = ko.computed(function () {
+                    return this.twits().length;
+                }.bind(this));
             };
 
             ko.applyBindings(vm);

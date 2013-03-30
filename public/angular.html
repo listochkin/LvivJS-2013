@@ -13,25 +13,43 @@
 
         </script>
 
-        <script>
-            function TwitDashboard($scope){
-                console.log('TwitDashboard');
+        <script src="js/vendor.js"></script>
 
+        <script>
+            var twitsArr = [];
+
+            angular.injector(['ng']).invoke(function($rootScope) {
+               var scope = $rootScope.$new();
+
+               scope.$watch(function($scope) {
+                 $scope.twits = twitsArr;
+               }); // initialize the watch
+
+               scope.$digest();
+            });
+
+            function TwitDashboard($scope){
                 $scope.twits = [];
-                $scope.twits.push(twit);
+                //$scope.twits.push(twit);
+
+                window.addEventListener('message', function (message) {
+                    var twit = JSON.parse(message.data);
+                    twitsArr.push(twit);
+                    //TODO:
+                    $scope.twits.push(twit);
+                    $scope.$apply();
+                    console.log('New twit: ');
+                });
 
                 $scope.addTwit = function (newTwit){
                     $scope.twits.push(newTwit);
                 };
+
+                console.log('TwitDashboard');
+
+                console.log('EndTwitDashboard');
             }
         </script>
-
-<!--         <ul data-bind="foreach: twits">
-            <li>
-                <p>@<span data-bind="text: user.name"></span> at <span data-bind="text: created_at"></span></p>
-                <p data-bind="text: text"></p>
-            </li>
-        </ul> -->
 
         <div ng-controller="TwitDashboard">
 <!--             <span>{{remaining()}} of {{todos.length}} remaining</span>
