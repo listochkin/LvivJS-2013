@@ -16,8 +16,8 @@
         <script src="js/vendor.js"></script>
 
         <script>
-            window.addEventListener('message', function (twit) {
-                vm.twits.push(JSON.parse(twit));
+            window.addEventListener('message', function (message) {
+                vm.twits.push(JSON.parse(message.data));
             });
 
             window.vm = {
