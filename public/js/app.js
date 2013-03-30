@@ -6,7 +6,9 @@
 var socket = io.connect('http://localhost');
 
 var frames = [
-	document.getElementById('knockout').contentWindow
+	document.getElementById('knockout').contentWindow,
+	document.getElementById('angular').contentWindow,
+	document.getElementById('ember').contentWindow
 ];
 
 socket.on('twit', function (twit) {
